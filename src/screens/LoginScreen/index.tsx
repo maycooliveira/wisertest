@@ -1,15 +1,37 @@
-import React from 'react';
-import { Container, TextTitle} from '../LoginScreen/styles';
-import { useFonts } from 'expo-font';
+import React, { useEffect, useCallback, useState } from 'react';
+import { Container } from '../LoginScreen/styles';
+import BaseButton from '../../components/BaseButton';
+import { getDeviceTypeAsync, DeviceType } from 'expo-device';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateDeviceType } from '../../store/modules/deviceType/actions';
+import LoginPhoneType from '../../components/LoginPhoneType';
 
 const LoginScreen: React.FC = () => {
-  let [fontsLoaded] = useFonts({
-    "montserrat-regular" : require('../../../assets/fonts/Montserrat-Regular.ttf')
-  });
+  const dispatch = useDispatch();
+  const { deviceType } = useSelector((state) => state);
+
+  const getType = useCallback(async () => {
+    const type = await getDeviceTypeAsync();
+    dispatch(updateDeviceType(type));
+  }, [dispatch]);
+
+  useEffect(() => {
+    getType();
+  }, [getType]);
 
   return (
-    <Container>
-      <TextTitle center={true} fontSize={24} color={'#383E71'} fontFamily={'montserrat-regular'}>{'Olá, seja\nbem-vindo!'}</TextTitle>
+    <Container bounces={false}>
+      {deviceType.type === DeviceType.PHONE ? (
+        <LoginPhoneType />
+      ) : (
+        <BaseButton
+          title={'ENTRAR'}
+          color={'#fff'}
+          loading={false}
+          onPress={() => {}}
+          fontFamily={'montserrat-semiBold'}
+        />
+      )}
     </Container>
   );
 };
