@@ -1,15 +1,18 @@
 import React from 'react';
-import { Spacer, TextTitle } from '../../styles/textStyles';
+import { Spacer, TextBase } from '../../styles/textStyles';
 import AppLoading from 'expo-app-loading';
 import {
   useFonts,
+  Montserrat_400Regular,
   Montserrat_600SemiBold,
   Montserrat_600SemiBold_Italic,
 } from '@expo-google-fonts/montserrat';
-import { Container } from './styles';
+import { Container, Input, View, ContainerInput, ContainerIconError } from './styles';
+import Icon from 'react-native-vector-icons/Feather';
 
 const LoginForme: React.FC = () => {
   let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
     Montserrat_600SemiBold,
     Montserrat_600SemiBold_Italic,
   });
@@ -18,17 +21,63 @@ const LoginForme: React.FC = () => {
   }
   return (
     <Container>
-      <TextTitle center={true} fontSize={24} color={'#383E71'} fontFamily={'Montserrat_400Regular'}>
+      <TextBase center={true} fontSize={24} color={'#383E71'} fontFamily={'Montserrat_400Regular'}>
         {'Olá, seja\nbem-vindo!'}
-      </TextTitle>
+      </TextBase>
       <Spacer value={16} />
-      <TextTitle
-        center={false}
-        fontSize={12}
-        color={'#989FDB'}
-        fontFamily={'Montserrat_600SemiBold'}>
+      <TextBase center={true} fontSize={12} color={'#989FDB'} fontFamily={'Montserrat_600SemiBold'}>
         {'Para acessar a plataforma, faça seu login.'}
-      </TextTitle>
+      </TextBase>
+
+      <Spacer value={20} />
+
+      <View>
+        <TextBase
+          center={false}
+          fontSize={10}
+          marginLeft={10}
+          color={'#383E71'}
+          fontFamily={'Montserrat_400Regular'}>
+          {'E-MAIL'}
+        </TextBase>
+
+        <Spacer value={8} />
+
+        <ContainerInput>
+          <Input isError={true} />
+          <ContainerIconError>
+            <Icon name={'x'} size={16} color={'#FF377F'} />
+          </ContainerIconError>
+        </ContainerInput>
+        <View>
+          <Spacer value={8} />
+          <TextBase
+            center={false}
+            fontSize={10}
+            marginLeft={14}
+            color={'#FF377F'}
+            fontFamily={'Montserrat_400Regular'}>
+            {'Digite um e-mail válido;'}
+          </TextBase>
+        </View>
+
+        <Spacer value={16} />
+
+        <TextBase
+          center={false}
+          fontSize={10}
+          marginLeft={10}
+          color={'#383E71'}
+          fontFamily={'Montserrat_400Regular'}>
+          {'SENHA'}
+        </TextBase>
+
+        <Spacer value={8} />
+
+        <ContainerInput>
+          <Input isError={false} />
+        </ContainerInput>
+      </View>
     </Container>
   );
 };

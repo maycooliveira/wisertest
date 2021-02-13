@@ -1,6 +1,7 @@
 import React from 'react';
 import { ButtonTitle, Container, LoadingAction } from './styles';
 import { StyleSheet } from 'react-native';
+import AppLoading from 'expo-app-loading';
 import { useFonts, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -15,9 +16,13 @@ interface Props {
 
 const BaseButton: React.FC<Props> = (props) => {
   const { title, onPress, color, loading, width, useShadow } = props;
-  useFonts({
+  let [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
   });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <Container onPress={onPress} useShadow={useShadow} backgroundColor={color}>
       <LinearGradient

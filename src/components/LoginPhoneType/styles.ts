@@ -11,6 +11,7 @@ export const Container = styled.ScrollView.attrs(() => ({
 
 export const Image = styled.Image`
   flex: 1;
+  width: 100%;
 `;
 
 export const View = styled.View`
@@ -27,8 +28,9 @@ export const ContainerForm = styled.View`
   flex: 1;
   padding-horizontal: 32px;
   justify-content: center;
+  margin-top: 24px;
   align-items: center;
-  top: 0;
+  top: 16;
   left: 0;
   right: 0;
   bottom: 0;
@@ -37,7 +39,7 @@ export const ContainerForm = styled.View`
 
 export const ContainerInfo = styled.View`
   background-color: #faf5ff;
-  padding-top: 24px;
+  padding-top: 32px;
   padding-bottom: 56px;
   padding-horizontal: 28px;
   width: 100%;
