@@ -17,8 +17,6 @@ export const Container = styled.TouchableOpacity<ContainerProps>`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  /* position: absolute;
-  bottom: 0; */
   box-shadow: ${(props) => (props.useShadow ? '0px 10px 25px #cf99db' : '0px 0px 0px #000')};
   elevation: ${(props) => (props.useShadow ? '7' : '0')};
 `;

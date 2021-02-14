@@ -1,22 +1,22 @@
 import styled from 'styled-components/native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-export const Container = styled.ScrollView.attrs(() => ({
-  contentContainerStyle: {
-    flexGrow: 1,
-  },
-}))`
+export const Container = styled.View`
   flex: 1;
   background-color: #130525;
+`;
+
+export const ScrollView = styled(KeyboardAwareScrollView)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
 export const Image = styled.Image`
   flex: 1;
   width: 100%;
-`;
-
-export const View = styled.View`
-  height: 40%;
-  background-color: #130525;
 `;
 
 export const BackgroundImage = styled.ImageBackground`
@@ -26,15 +26,8 @@ export const BackgroundImage = styled.ImageBackground`
 
 export const ContainerForm = styled.View`
   flex: 1;
-  padding-horizontal: 32px;
-  justify-content: center;
-  margin-top: 24px;
-  align-items: center;
-  top: 16;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
+  margin-top: 39%;
+  margin-horizontal: 32px;
 `;
 
 export const ContainerInfo = styled.View`
@@ -45,3 +38,11 @@ export const ContainerInfo = styled.View`
   width: 100%;
   border-radius: 8px;
 `;
+
+export const ButtonForgotPassword = styled.TouchableOpacity`
+  justify-content: flex-end;
+  margin-bottom: -3px;
+  align-items: flex-end;
+`;
+
+export const ViewInfo = styled.View``;

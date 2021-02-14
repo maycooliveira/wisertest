@@ -44,7 +44,7 @@ const LoginForme: React.FC = () => {
         <Spacer value={8} />
 
         <ContainerInput>
-          <Input isError={true} />
+          <Input isError={true} fontFamily={'Montserrat_400Regular'} autoCapitalize={'none'} />
           <ContainerIconError>
             <Icon name={'x'} size={16} color={'#FF377F'} />
           </ContainerIconError>
@@ -75,7 +75,7 @@ const LoginForme: React.FC = () => {
         <Spacer value={8} />
 
         <ContainerInput>
-          <Input isError={false} />
+          <Input isError={false} secureTextEntry={true} fontFamily={'Montserrat_400Regular'} />
         </ContainerInput>
       </View>
     </Container>

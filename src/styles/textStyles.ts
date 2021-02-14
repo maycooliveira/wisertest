@@ -3,8 +3,9 @@ import styled from 'styled-components/native';
 interface TextType {
   fontSize: number;
   color: string;
-  center: boolean;
+  center?: boolean;
   fontFamily: string;
+  isUnderline?: boolean;
   marginLeft?: number;
 }
 
@@ -18,6 +19,9 @@ export const TextBase = styled.Text<TextType>`
   font-family: ${(props: { fontFamily: string }) => props.fontFamily};
   text-align: ${(props: { center: boolean }) => (props.center ? 'center' : 'left')};
   margin-left: ${(props) => props.marginLeft || 0};
+  text-decoration: ${(props: { isUnderline: boolean }) =>
+    props.isUnderline ? 'underline' : 'none'};
+  text-decoration-color: white;
 `;
 
 export const Spacer = styled.View<SpacerValue>`

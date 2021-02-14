@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import { Container } from '../LoginScreen/styles';
+import { Container, Label } from '../LoginScreen/styles';
 import BaseButton from '../../components/BaseButton';
 import { getDeviceTypeAsync, DeviceType } from 'expo-device';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,7 @@ const LoginScreen: React.FC = () => {
   }, [getType]);
 
   return (
-    <Container bounces={false}>
+    <Container>
       {deviceType.type === DeviceType.PHONE ? (
         <LoginPhoneType />
       ) : (
