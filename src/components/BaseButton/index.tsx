@@ -33,7 +33,7 @@ const BaseButton: React.FC<Props> = (props) => {
         {!loading && (
           <ButtonTitle fontFamily={'Montserrat_600SemiBold'}>{title.toUpperCase()}</ButtonTitle>
         )}
-        {loading && <LoadingAction />}
+        {loading && <LoadingAction color={'#fff'} />}
       </LinearGradient>
     </Container>
   );
