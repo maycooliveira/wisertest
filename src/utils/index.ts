@@ -1,17 +1,23 @@
 import APP from '../configs/app';
-import { Alert } from 'react-native';
+const { showMessage } = require('react-native-flash-message');
 
-const showMessage = (msg : string) => {
-  Alert.alert(APP.NAME, msg);
-};
-
-function checkEmail(value : string) {
+function checkEmail(value: string) {
   const reg = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
   return reg.test(value);
 }
 
-function checkPasswordLength(value : string) {
+function checkPasswordLength(value: string) {
   return value.length >= 6;
 }
 
-export { showMessage, checkEmail, checkPasswordLength };
+const flashError = (message: string) => {
+  showMessage({
+    message: APP.NAME,
+    icon: 'danger',
+    description: message ?? 'Erro desconhecido',
+    type: 'danger',
+    statusBarIsTranslucent: true,
+  });
+};
+
+export { checkEmail, checkPasswordLength, flashError };

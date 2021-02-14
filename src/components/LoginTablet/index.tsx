@@ -14,13 +14,17 @@ import loginBackground from '../../images/loginbackgroundtablet.png';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat';
 import LoginForme from '../LoginForm';
+import { useDispatch, useSelector } from 'react-redux';
 import BaseButton from '../BaseButton';
 import { ButtonForgotPassword } from '../LoginPhone/styles';
 import { Spacer, TextBase } from '../../styles/textStyles';
+import { checkCredentials } from '../../store/modules/login/actions';
 
 const { width } = Dimensions.get('screen');
 
 const LoginTablet: React.FC = () => {
+  const dispatch = useDispatch();
+  const { login } = useSelector((state) => state);
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
   });
@@ -45,8 +49,10 @@ const LoginTablet: React.FC = () => {
             color={'#fff'}
             useShadow={true}
             width={width * 0.4}
-            loading={false}
-            onPress={() => {}}
+            loading={login.loading}
+            onPress={() => {
+              dispatch(checkCredentials());
+            }}
           />
 
           <Spacer value={12} />

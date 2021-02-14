@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Spacer, TextBase } from '../../styles/textStyles';
 import AppLoading from 'expo-app-loading';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { DeviceType } from 'expo-device';
 import {
   useFonts,
@@ -11,15 +11,58 @@ import {
 } from '@expo-google-fonts/montserrat';
 import { Container, Input, View, ContainerInput, ContainerIconError } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
+import {
+  checkIsValidEmail,
+  credentialsFail,
+  updateCredentials,
+  requestLogin,
+  requestLoginFailure,
+} from '../../store/modules/login/actions';
+import LOGIN_TYPES from '../../store/modules/login/types';
+import { checkEmail, flashError } from '../../utils';
 
 const LoginForme: React.FC = () => {
-  const { deviceType } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { deviceType, login } = useSelector((state) => state);
+  const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [isTablet] = useState(deviceType.type === DeviceType.TABLET);
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
     Montserrat_600SemiBold,
     Montserrat_600SemiBold_Italic,
   });
+
+  function handleChangeText(type: any, value: string) {
+    setFormValues({ ...formValues, [type]: value });
+  }
+
+  useEffect(() => {
+    dispatch(updateCredentials(formValues));
+  }, [formValues, dispatch]);
+
+  useEffect(() => {
+    if (login.type === LOGIN_TYPES.CHECK_CREDENTIALS) {
+      if (login.data.email.trim() === '') {
+        flashError('Informar o campo E-MAIL');
+        dispatch(credentialsFail());
+        return;
+      }
+      if (login.data.password.trim() === '') {
+        flashError('Informar o campo SENHA');
+        dispatch(credentialsFail());
+        return;
+      }
+
+      dispatch(checkIsValidEmail(checkEmail(login.data.email)));
+    } else if (login.type === LOGIN_TYPES.ISVALID_EMAIL && login.isValidEmail) {
+      dispatch(requestLogin(formValues));
+
+      setTimeout(() => {
+        dispatch(requestLoginFailure('teste'));
+      }, 5000);
+    }
+  }, [login, dispatch, formValues]);
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
@@ -58,22 +101,33 @@ const LoginForme: React.FC = () => {
         <Spacer value={8} />
 
         <ContainerInput>
-          <Input isError={true} fontFamily={'Montserrat_400Regular'} autoCapitalize={'none'} />
-          <ContainerIconError>
-            <Icon name={'x'} size={16} color={'#FF377F'} />
-          </ContainerIconError>
+          <Input
+            isError={!login.isValidEmail}
+            fontFamily={'Montserrat_400Regular'}
+            autoCapitalize={'none'}
+            keyboardType="email-address"
+            value={formValues.email}
+            onChangeText={(text) => handleChangeText('email', text)}
+          />
+          {!login.isValidEmail && (
+            <ContainerIconError>
+              <Icon name={'x'} size={16} color={'#FF377F'} />
+            </ContainerIconError>
+          )}
         </ContainerInput>
-        <View>
-          <Spacer value={8} />
-          <TextBase
-            center={false}
-            fontSize={10}
-            marginLeft={14}
-            color={'#FF377F'}
-            fontFamily={'Montserrat_400Regular'}>
-            {'Digite um e-mail válido;'}
-          </TextBase>
-        </View>
+        {!login.isValidEmail && (
+          <View>
+            <Spacer value={8} />
+            <TextBase
+              center={false}
+              fontSize={10}
+              marginLeft={14}
+              color={'#FF377F'}
+              fontFamily={'Montserrat_400Regular'}>
+              {'Digite um e-mail válido;'}
+            </TextBase>
+          </View>
+        )}
 
         <Spacer value={16} />
 
@@ -89,7 +143,13 @@ const LoginForme: React.FC = () => {
         <Spacer value={8} />
 
         <ContainerInput>
-          <Input isError={false} secureTextEntry={true} fontFamily={'Montserrat_400Regular'} />
+          <Input
+            isError={false}
+            secureTextEntry={true}
+            fontFamily={'Montserrat_400Regular'}
+            value={formValues.password}
+            onChangeText={(text) => handleChangeText('password', text)}
+          />
         </ContainerInput>
       </View>
     </Container>
