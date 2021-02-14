@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Spacer, TextBase } from '../../styles/textStyles';
 import AppLoading from 'expo-app-loading';
+import { useSelector } from 'react-redux';
+import { DeviceType } from 'expo-device';
 import {
   useFonts,
   Montserrat_400Regular,
@@ -11,6 +13,8 @@ import { Container, Input, View, ContainerInput, ContainerIconError } from './st
 import Icon from 'react-native-vector-icons/Feather';
 
 const LoginForme: React.FC = () => {
+  const { deviceType } = useSelector((state) => state);
+  const [isTablet] = useState(deviceType.type === DeviceType.TABLET);
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
     Montserrat_600SemiBold,
@@ -21,12 +25,22 @@ const LoginForme: React.FC = () => {
   }
   return (
     <Container>
-      <TextBase center={true} fontSize={24} color={'#383E71'} fontFamily={'Montserrat_400Regular'}>
+      <TextBase
+        center={!isTablet}
+        fontSize={isTablet ? 40 : 24}
+        color={'#383E71'}
+        fontFamily={'Montserrat_400Regular'}>
         {'Olá, seja\nbem-vindo!'}
       </TextBase>
       <Spacer value={16} />
-      <TextBase center={true} fontSize={12} color={'#989FDB'} fontFamily={'Montserrat_600SemiBold'}>
-        {'Para acessar a plataforma, faça seu login.'}
+      <TextBase
+        center={!isTablet}
+        fontSize={isTablet ? 16 : 12}
+        color={'#989FDB'}
+        fontFamily={'Montserrat_600SemiBold'}>
+        {isTablet
+          ? 'Para acessar a plataforma,\nfaça seu login.'
+          : 'Para acessar a plataforma, faça seu login.'}
       </TextBase>
 
       <Spacer value={20} />

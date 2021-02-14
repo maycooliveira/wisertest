@@ -6,7 +6,9 @@ interface InputProps {
   fontFamily: string;
 }
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  width: 100%;
+`;
 
 export const View = styled.View``;
 

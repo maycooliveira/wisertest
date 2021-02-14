@@ -10,7 +10,7 @@ interface Props {
   color: string;
   loading: boolean;
   useShadow: boolean;
-  width: number;
+  width?: number;
   onPress: () => void;
 }
 
@@ -44,7 +44,7 @@ export default BaseButton;
 const styles = (props: any) =>
   StyleSheet.create({
     backgroundGradiente: {
-      width: props.width,
+      width: props.width || 'auto',
       height: 48,
       borderRadius: 8,
       alignItems: 'center',

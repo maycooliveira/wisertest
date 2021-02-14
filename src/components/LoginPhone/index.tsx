@@ -20,7 +20,7 @@ import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat';
 
 const { width } = Dimensions.get('screen');
 
-const LoginPhoneType: React.FC = () => {
+const LoginPhone: React.FC = () => {
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
   });
@@ -72,4 +72,4 @@ const LoginPhoneType: React.FC = () => {
   );
 };
 
-export default LoginPhoneType;
+export default LoginPhone;

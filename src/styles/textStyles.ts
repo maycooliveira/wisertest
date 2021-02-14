@@ -18,10 +18,10 @@ export const TextBase = styled.Text<TextType>`
   color: ${(props: { color: string }) => props.color};
   font-family: ${(props: { fontFamily: string }) => props.fontFamily};
   text-align: ${(props: { center: boolean }) => (props.center ? 'center' : 'left')};
-  margin-left: ${(props) => props.marginLeft || 0};
+  margin-left: ${(props: { marginLeft: number }) => props.marginLeft || 0};
   text-decoration: ${(props: { isUnderline: boolean }) =>
     props.isUnderline ? 'underline' : 'none'};
-  text-decoration-color: white;
+  text-decoration-color: ${(props: { color: string }) => props.color};
 `;
 
 export const Spacer = styled.View<SpacerValue>`

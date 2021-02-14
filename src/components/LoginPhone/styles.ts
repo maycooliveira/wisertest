@@ -40,9 +40,7 @@ export const ContainerInfo = styled.View`
 `;
 
 export const ButtonForgotPassword = styled.TouchableOpacity`
-  justify-content: flex-end;
   margin-bottom: -3px;
-  align-items: flex-end;
 `;
 
 export const ViewInfo = styled.View``;

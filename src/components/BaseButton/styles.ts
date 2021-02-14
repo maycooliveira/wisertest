@@ -11,7 +11,7 @@ interface TitleProps {
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
   background-color: ${(props) => props.backgroundColor};
-  margin-top: -24px;
+  margin-top: ${(props) => (props.useShadow ? '30px' : '-24px')};
   margin-bottom: 20px;
   align-self: center;
   align-items: center;

@@ -4,7 +4,8 @@ import BaseButton from '../../components/BaseButton';
 import { getDeviceTypeAsync, DeviceType } from 'expo-device';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDeviceType } from '../../store/modules/deviceType/actions';
-import LoginPhoneType from '../../components/LoginPhoneType';
+import LoginPhone from '../../components/LoginPhone';
+import LoginTablet from '../../components/LoginTablet';
 
 const LoginScreen: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,19 +21,7 @@ const LoginScreen: React.FC = () => {
   }, [getType]);
 
   return (
-    <Container>
-      {deviceType.type === DeviceType.PHONE ? (
-        <LoginPhoneType />
-      ) : (
-        <BaseButton
-          title={'ENTRAR'}
-          color={'#fff'}
-          loading={false}
-          onPress={() => {}}
-          fontFamily={'montserrat-semiBold'}
-        />
-      )}
-    </Container>
+    <Container>{deviceType.type === DeviceType.PHONE ? <LoginPhone /> : <LoginTablet />}</Container>
   );
 };
 
