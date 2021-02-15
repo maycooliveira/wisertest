@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
 interface ContainerProps {
-  backgroundColor: string;
   useShadow: boolean;
 }
 
@@ -10,9 +9,10 @@ interface TitleProps {
 }
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
-  background-color: ${(props) => props.backgroundColor};
   margin-top: ${(props) => (props.useShadow ? '30px' : '-24px')};
   margin-bottom: 20px;
+  width: 100%;
+  padding-horizontal: 80px;
   align-self: center;
   align-items: center;
   justify-content: center;

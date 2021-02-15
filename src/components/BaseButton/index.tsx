@@ -4,18 +4,16 @@ import { StyleSheet } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import colors from '../../styles/colors';
 interface Props {
   title: string;
-  color: string;
   loading: boolean;
   useShadow: boolean;
-  width?: number;
   onPress: () => void;
 }
 
 const BaseButton: React.FC<Props> = (props) => {
-  const { title, onPress, color, loading, width, useShadow } = props;
+  const { title, onPress, loading, useShadow } = props;
   let [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
   });
@@ -24,16 +22,16 @@ const BaseButton: React.FC<Props> = (props) => {
     return <AppLoading />;
   }
   return (
-    <Container onPress={onPress} useShadow={useShadow} backgroundColor={color}>
+    <Container onPress={onPress} useShadow={useShadow}>
       <LinearGradient
-        colors={['#9D25B0', '#383E71']}
+        colors={[colors.purple, colors.base]}
         start={[0.1, 0.1]}
         end={[1, 1]}
-        style={styles({ width }).backgroundGradiente}>
+        style={styles().backgroundGradiente}>
         {!loading && (
           <ButtonTitle fontFamily={'Montserrat_600SemiBold'}>{title.toUpperCase()}</ButtonTitle>
         )}
-        {loading && <LoadingAction color={'#fff'} />}
+        {loading && <LoadingAction color={colors.white} />}
       </LinearGradient>
     </Container>
   );
@@ -41,10 +39,10 @@ const BaseButton: React.FC<Props> = (props) => {
 
 export default BaseButton;
 
-const styles = (props: any) =>
+const styles = () =>
   StyleSheet.create({
     backgroundGradiente: {
-      width: props.width || 'auto',
+      width: '100%',
       height: 48,
       borderRadius: 8,
       alignItems: 'center',

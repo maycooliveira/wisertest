@@ -47,9 +47,7 @@ const LoginTablet: React.FC = () => {
 
           <BaseButton
             title={'ENTRAR'}
-            color={colors.white}
             useShadow={true}
-            width={width * 0.4}
             loading={login.loading}
             onPress={() => {
               dispatch(checkCredentials());

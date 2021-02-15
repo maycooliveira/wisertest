@@ -46,9 +46,7 @@ const LoginPhone: React.FC = () => {
           </ContainerInfo>
           <BaseButton
             title={'ENTRAR'}
-            color={colors.white}
             useShadow={false}
-            width={width * 0.44}
             loading={login.loading}
             onPress={() => {
               dispatch(checkCredentials());
