@@ -31,6 +31,9 @@ expo start
 ```
 
 ## Usage example
+
+- Install Expo Go app on: `Android` or `IOs` device
+
 Scan to open
 
 Install Expo client on device.
