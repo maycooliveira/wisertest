@@ -13,7 +13,7 @@
   <img alt="Wiser" title="#screen" width="250px" src="prints/print3.png" />
  </div>
  <div align="center" styles="flex-direction: row;">
-  <img alt="Wiser" title="#screen" width="250px" src="prints/print4.png" />
+  <img alt="Wiser" title="#screen" src="prints/print4.png" />
 </div>
 <div align="center" styles="flex-direction: row;">
    <img alt="Wiser" title="#screen" width="250px" src="prints/print5.png" />
