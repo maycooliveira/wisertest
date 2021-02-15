@@ -19,6 +19,7 @@ import {
 } from '../../store/modules/login/actions';
 import LOGIN_TYPES from '../../store/modules/login/types';
 import { checkEmail, flashError } from '../../utils';
+import colors from '../../styles/colors';
 
 const LoginForme: React.FC = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ const LoginForme: React.FC = () => {
       <TextBase
         center={!isTablet}
         fontSize={isTablet ? 40 : 24}
-        color={'#383E71'}
+        color={colors.base}
         fontFamily={'Montserrat_400Regular'}>
         {'Olá, seja\nbem-vindo!'}
       </TextBase>
@@ -74,7 +75,7 @@ const LoginForme: React.FC = () => {
       <TextBase
         center={!isTablet}
         fontSize={isTablet ? 16 : 12}
-        color={'#989FDB'}
+        color={colors.thinPurple}
         fontFamily={'Montserrat_600SemiBold'}>
         {isTablet
           ? 'Para acessar a plataforma,\nfaça seu login.'
@@ -88,7 +89,7 @@ const LoginForme: React.FC = () => {
           center={false}
           fontSize={10}
           marginLeft={10}
-          color={'#383E71'}
+          color={colors.base}
           fontFamily={'Montserrat_400Regular'}>
           {'E-MAIL'}
         </TextBase>
@@ -105,8 +106,11 @@ const LoginForme: React.FC = () => {
             onChangeText={(text) => handleChangeText('email', text)}
           />
           {!login.isValidEmail && (
-            <ContainerIconError>
-              <Icon name={'x'} size={16} color={'#FF377F'} />
+            <ContainerIconError
+              onPress={() => {
+                handleChangeText('email', '');
+              }}>
+              <Icon name={'x'} size={16} color={colors.error} />
             </ContainerIconError>
           )}
         </ContainerInput>
@@ -117,7 +121,7 @@ const LoginForme: React.FC = () => {
               center={false}
               fontSize={10}
               marginLeft={14}
-              color={'#FF377F'}
+              color={colors.error}
               fontFamily={'Montserrat_400Regular'}>
               {'Digite um e-mail válido;'}
             </TextBase>
@@ -130,7 +134,7 @@ const LoginForme: React.FC = () => {
           center={false}
           fontSize={10}
           marginLeft={10}
-          color={'#383E71'}
+          color={colors.base}
           fontFamily={'Montserrat_400Regular'}>
           {'SENHA'}
         </TextBase>

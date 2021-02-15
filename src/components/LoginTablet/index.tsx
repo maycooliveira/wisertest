@@ -19,6 +19,7 @@ import BaseButton from '../BaseButton';
 import { ButtonForgotPassword } from '../LoginPhone/styles';
 import { Spacer, TextBase } from '../../styles/textStyles';
 import { checkCredentials } from '../../store/modules/login/actions';
+import colors from '../../styles/colors';
 
 const { width } = Dimensions.get('screen');
 
@@ -46,7 +47,7 @@ const LoginTablet: React.FC = () => {
 
           <BaseButton
             title={'ENTRAR'}
-            color={'#fff'}
+            color={colors.white}
             useShadow={true}
             width={width * 0.4}
             loading={login.loading}
@@ -60,7 +61,7 @@ const LoginTablet: React.FC = () => {
           <TextBase
             center={true}
             fontSize={14}
-            color={'#989FDB'}
+            color={colors.thinPurple}
             fontFamily={'Montserrat_400Regular'}>
             {'Esqueceu seu login ou senha?\nClique '}
             <ButtonForgotPassword>
@@ -68,7 +69,7 @@ const LoginTablet: React.FC = () => {
                 center={true}
                 isUnderline={true}
                 fontSize={14}
-                color={'#9D25B0'}
+                color={colors.purple}
                 fontFamily={'Montserrat_400Regular'}>
                 {'aqui'}
               </TextBase>

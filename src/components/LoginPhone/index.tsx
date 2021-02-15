@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat';
 import { checkCredentials } from '../../store/modules/login/actions';
+import colors from '../../styles/colors';
 
 const { width } = Dimensions.get('screen');
 
@@ -45,7 +46,7 @@ const LoginPhone: React.FC = () => {
           </ContainerInfo>
           <BaseButton
             title={'ENTRAR'}
-            color={'#fff'}
+            color={colors.white}
             useShadow={false}
             width={width * 0.44}
             loading={login.loading}
@@ -56,7 +57,11 @@ const LoginPhone: React.FC = () => {
 
           <Spacer value={4} />
 
-          <TextBase center={true} fontSize={14} color={'#fff'} fontFamily={'Montserrat_400Regular'}>
+          <TextBase
+            center={true}
+            fontSize={14}
+            color={colors.white}
+            fontFamily={'Montserrat_400Regular'}>
             {'Esqueceu seu login ou senha?\nClique '}
             <ViewInfo>
               <Spacer value={4} />
@@ -65,7 +70,7 @@ const LoginPhone: React.FC = () => {
                   center={true}
                   isUnderline={true}
                   fontSize={14}
-                  color={'#fff'}
+                  color={colors.white}
                   fontFamily={'Montserrat_400Regular'}>
                   {'aqui'}
                 </TextBase>

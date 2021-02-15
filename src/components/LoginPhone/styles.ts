@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import colors from '../../styles/colors';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #130525;
+  background-color: ${colors.slate};
 `;
 
 export const ScrollView = styled(KeyboardAwareScrollView)`
@@ -31,7 +32,7 @@ export const ContainerForm = styled.View`
 `;
 
 export const ContainerInfo = styled.View`
-  background-color: #faf5ff;
+  background-color: ${colors.thinGray};
   padding-top: 32px;
   padding-bottom: 56px;
   padding-horizontal: 28px;

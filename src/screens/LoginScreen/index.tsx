@@ -1,6 +1,5 @@
-import React, { useEffect, useCallback, useState } from 'react';
-import { Container, Label } from '../LoginScreen/styles';
-import BaseButton from '../../components/BaseButton';
+import React, { useEffect, useCallback } from 'react';
+import { Container } from '../LoginScreen/styles';
 import { getDeviceTypeAsync, DeviceType } from 'expo-device';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDeviceType } from '../../store/modules/deviceType/actions';
