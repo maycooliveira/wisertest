@@ -31,9 +31,11 @@ expo start
 ```
 
 ## Usage example
+
+- Install Expo Go app on: `Android` or `IOs` device
+
 Scan to open
 
-Install Expo client on device.
 With an Android and iOS phone, you can scan this QR code with your Expo mobile app to load this project immediately.
 
   <img alt="Expo" title="#screen" width="250px" src="prints/qrcode.png" />
