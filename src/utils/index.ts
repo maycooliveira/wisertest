@@ -20,4 +20,14 @@ const flashError = (message: string) => {
   });
 };
 
-export { checkEmail, checkPasswordLength, flashError };
+const flashSuccess = (message: string) => {
+  showMessage({
+    message: APP.NAME,
+    icon: 'success',
+    description: message ?? 'Done',
+    type: 'success',
+    statusBarIsTranslucent: true,
+  });
+};
+
+export { checkEmail, checkPasswordLength, flashError, flashSuccess };

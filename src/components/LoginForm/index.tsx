@@ -16,7 +16,6 @@ import {
   credentialsFail,
   updateCredentials,
   requestLogin,
-  requestLoginFailure,
 } from '../../store/modules/login/actions';
 import LOGIN_TYPES from '../../store/modules/login/types';
 import { checkEmail, flashError } from '../../utils';
@@ -43,12 +42,12 @@ const LoginForme: React.FC = () => {
   useEffect(() => {
     if (login.type === LOGIN_TYPES.CHECK_CREDENTIALS) {
       if (login.data.email.trim() === '') {
-        flashError('Informar o campo E-MAIL');
+        flashError('Informe o campo E-MAIL');
         dispatch(credentialsFail());
         return;
       }
       if (login.data.password.trim() === '') {
-        flashError('Informar o campo SENHA');
+        flashError('Informe o campo SENHA');
         dispatch(credentialsFail());
         return;
       }
@@ -56,10 +55,6 @@ const LoginForme: React.FC = () => {
       dispatch(checkIsValidEmail(checkEmail(login.data.email)));
     } else if (login.type === LOGIN_TYPES.ISVALID_EMAIL && login.isValidEmail) {
       dispatch(requestLogin(formValues));
-
-      setTimeout(() => {
-        dispatch(requestLoginFailure('teste'));
-      }, 5000);
     }
   }, [login, dispatch, formValues]);
 

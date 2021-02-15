@@ -28,9 +28,15 @@ const reducer: Reducer = (state = { isValidEmail: true }, action) => {
         draft.loading = true;
         break;
       }
+      case '@login/REQUEST_LOGIN_SUCCESS': {
+        draft.type = LOGIN_TYPES.REQUEST_LOGIN_SUCCESS;
+        draft.result = action.payload;
+        draft.loading = false;
+        break;
+      }
       case '@login/REQUEST_LOGIN_FAILURE': {
         draft.type = LOGIN_TYPES.REQUEST_LOGIN_FAILURE;
-        draft.error = action.payload.error;
+        draft.error = action.payload;
         draft.loading = false;
         break;
       }

@@ -72,7 +72,7 @@ const LoginPhone: React.FC = () => {
               </ButtonForgotPassword>
             </ViewInfo>
           </TextBase>
-          <Spacer value={20} />
+          <Spacer value={40} />
         </ContainerForm>
       </ScrollView>
     </Container>

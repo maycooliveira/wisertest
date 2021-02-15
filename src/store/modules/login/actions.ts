@@ -29,13 +29,20 @@ export function checkIsValidEmail(isValid: boolean) {
 export function requestLogin(data: {}) {
   return {
     type: LOGIN_TYPES.REQUEST_LOGIN,
-    payload: { data },
+    payload: data,
   };
 }
 
-export function requestLoginFailure(error: {}) {
+export function requestLoginFailure(error: string) {
   return {
     type: LOGIN_TYPES.REQUEST_LOGIN_FAILURE,
-    payload: { error },
+    payload: error,
+  };
+}
+
+export function requestLoginSuccess(result: string) {
+  return {
+    type: LOGIN_TYPES.REQUEST_LOGIN_SUCCESS,
+    payload: result,
   };
 }
