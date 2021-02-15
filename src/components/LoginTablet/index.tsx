@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  BackgroundImage,
-  Image,
-  ContainerForm,
-  ContainerInfo,
-  View,
-  ScrollView,
-} from './styles';
+import { Container, BackgroundImage, Image, ContainerForm, ContainerInfo, View } from './styles';
 import { Dimensions } from 'react-native';
 import shadow from '../../images/shadow.png';
 import loginBackground from '../../images/loginbackgroundtablet.png';
@@ -20,6 +12,7 @@ import { ButtonForgotPassword } from '../LoginPhone/styles';
 import { Spacer, TextBase } from '../../styles/textStyles';
 import { checkCredentials } from '../../store/modules/login/actions';
 import colors from '../../styles/colors';
+import ButtonForgotPasswrod from '../ButtonForgotPassword';
 
 const { width } = Dimensions.get('screen');
 
@@ -62,16 +55,7 @@ const LoginTablet: React.FC = () => {
             color={colors.thinPurple}
             fontFamily={'Montserrat_400Regular'}>
             {'Esqueceu seu login ou senha?\nClique '}
-            <ButtonForgotPassword>
-              <TextBase
-                center={true}
-                isUnderline={true}
-                fontSize={14}
-                color={colors.purple}
-                fontFamily={'Montserrat_400Regular'}>
-                {'aqui'}
-              </TextBase>
-            </ButtonForgotPassword>
+            <ButtonForgotPasswrod color={colors.purple} />
           </TextBase>
         </ContainerForm>
       </ContainerInfo>

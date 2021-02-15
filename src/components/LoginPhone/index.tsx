@@ -5,7 +5,6 @@ import {
   Image,
   ContainerForm,
   ContainerInfo,
-  ButtonForgotPassword,
   ViewInfo,
   ScrollView,
 } from './styles';
@@ -20,6 +19,7 @@ import AppLoading from 'expo-app-loading';
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat';
 import { checkCredentials } from '../../store/modules/login/actions';
 import colors from '../../styles/colors';
+import ButtonForgotPasswrod from '../ButtonForgotPassword';
 
 const { width } = Dimensions.get('screen');
 
@@ -63,16 +63,7 @@ const LoginPhone: React.FC = () => {
             {'Esqueceu seu login ou senha?\nClique '}
             <ViewInfo>
               <Spacer value={4} />
-              <ButtonForgotPassword>
-                <TextBase
-                  center={true}
-                  isUnderline={true}
-                  fontSize={14}
-                  color={colors.white}
-                  fontFamily={'Montserrat_400Regular'}>
-                  {'aqui'}
-                </TextBase>
-              </ButtonForgotPassword>
+              <ButtonForgotPasswrod color={colors.white} />
             </ViewInfo>
           </TextBase>
           <Spacer value={40} />

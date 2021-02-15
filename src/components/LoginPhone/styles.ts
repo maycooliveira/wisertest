@@ -40,8 +40,4 @@ export const ContainerInfo = styled.View`
   border-radius: 8px;
 `;
 
-export const ButtonForgotPassword = styled.TouchableOpacity`
-  margin-bottom: -3px;
-`;
-
 export const ViewInfo = styled.View``;
